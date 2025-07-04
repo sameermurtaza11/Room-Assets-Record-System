@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room Asset Record System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
+</head>
+<body>
+
+  <h2>Room Info</h2>
+  <div id="main-div">
+    <table>
+      <thead>
+        <tr>
+          <th>Room ID</th>
+          <th>Room Name</th>
+          <th>Location</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody id="room-table-body">
+        <!-- Populated by JS / Flask -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Secondary Div -->
+  <div id="secondary-div" class="hidden">
+    <button onclick="closeDiv('secondary-div')">Close</button>
+    <h3>Room Assets</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Item ID</th>
+          <th>Item Type</th>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Model</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="asset-table-body">
+        <!-- Assets will be listed here -->
+      </tbody>
+    </table>
+    <button onclick="showDiv('third-div')">Add More Item</button>
+  </div>
+
+  <!-- Third Div -->
+  <div id="third-div" class="hidden">
+    <button onclick="closeDiv('third-div')">Close</button>
+    <h3>Add Item</h3>
+
+    <label>Item Type:</label>
+    <select id="item-type" onchange="toggleFormFields()">
+      <option value="">Select</option>
+      <option value="Digital Equipment">Digital Equipment</option>
+      <option value="Furniture">Furniture</option>
+    </select>
+
+    <div id="form-fields">
+      <input type="text" placeholder="Item ID" id="item-id">
+      <input type="text" placeholder="Item Name" id="item-name">
+      <input type="text" placeholder="Model" id="item-model">
+      <input type="number" placeholder="Quantity" id="item-quantity">
+    </div>
+
+    <button onclick="saveItem()">Save</button>
+    <button onclick="resetForm()">Reset Fields</button>
+  </div>
+
+  <!-- <script src="{{ url_for('static', filename='script.js') }}"></script> -->
+</body>
+</html>
